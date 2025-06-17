@@ -1,0 +1,31 @@
+---
+title: "Weekend's Hits"
+format: 
+  dashboard:
+    logo: "images/logo.png"
+    orientation: columns
+---
+
+
+## column {width="35%"}
+
+place holder first
+
+## column {width="65%"}
+
+placehode second 
+
+### Row {height ="10%"}
+
+placehoder for column2 row1
+
+
+### Row {height="70%"}
+
+placehoder for column2 row2
+
+### Row {height="20%"}
+
+placehoder for column2 row3
+
+
