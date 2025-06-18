@@ -4,19 +4,13 @@
     "href": "index.html",
     "title": "youtube-dashboard",
     "section": "",
-    "text": "This is a Quarto website.",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "This is a Quarto website."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site",
-    "crumbs": [
-      "About"
-    ]
+    "text": "About this site"
   }
 ]
