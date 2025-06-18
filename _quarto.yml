@@ -2,20 +2,11 @@ project:
   type: website
 
 website:
-  title: "EOTC Dallas Area"
-  sidebar:
-    title: "EOTC St Michael and St Slassie YouTube Channels"
-    style: "docked"
-    search: true
-    logo: images/logo.png
-  
+  navbar:
+    search: false
     contents:
-      - href: index.qmd
-        text: Home
-      - href: about.qmd
-        text: About
-      - href: dashboard.qmd
-        text: Dashboard
+      - text: "Dashboard"
+        href: dashboard.qmd
 
 format:
   html:
