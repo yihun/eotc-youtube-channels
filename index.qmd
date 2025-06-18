@@ -1,5 +1,5 @@
 ---
-title: "youtube-dashboard"
+title: "EOTC Youtube Channes Analysis Dashboard"
 ---
 
 This is a Quarto website.
