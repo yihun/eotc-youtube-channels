@@ -13,6 +13,7 @@ permissions:
 jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
+    environment: github-pages #
 
     steps:
       # ── 1. Checkout ────────────────────────────────────────────────
