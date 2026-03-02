@@ -18,6 +18,18 @@ jobs:
       # ── 1. Checkout ────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpng-dev \
+            libjpeg-dev \
+            libtiff-dev \
+            libfontconfig1-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libfreetype6-dev \
+            libxml2-dev
 
       # ── .Set up R ────────────────────────────────────────────
       - name: Set up R
