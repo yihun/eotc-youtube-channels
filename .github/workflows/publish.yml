@@ -1,28 +1,63 @@
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-  # schedule:
-  #   - cron: '0 13 * * *'
+name: Update Dashboard
 
-name: Quarto Publish
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 06:00 UTC
+  workflow_dispatch: # Allow manual runs from the Actions tab
+
+permissions:
+  contents: write # Needed to commit the updated DB back to the repo
+  pages: write # Needed to deploy to GitHub Pages
+  id-token: write
 
 jobs:
-  build-deploy:
+  update-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
     steps:
-      - name: Check out repository
+      # ── 1. Checkout ────────────────────────────────────────────────
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # ── 2. Python setup ────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      # ── 3. Fetch YouTube data ──────────────────────────────────────
+      - name: Fetch YouTube data
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python fetch_youtube_data.py
+
+      # ── 4. Commit updated DB back to repo ─────────────────────────
+      - name: Commit updated database
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add eotc_youtube_data.db
+          # Only commit if the DB actually changed
+          git diff --cached --quiet || git commit -m "chore: update YouTube data [skip ci]"
+          git push
+
+      # ── 5. Quarto setup ───────────────────────────────────────────
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
+      # ── 6. Render dashboard ───────────────────────────────────────
+      - name: Render Quarto dashboard
+        run: quarto render dashboard.qmd --output-dir _site
+
+      # ── 7. Deploy to GitHub Pages ─────────────────────────────────
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
