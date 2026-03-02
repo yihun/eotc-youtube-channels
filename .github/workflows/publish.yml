@@ -52,8 +52,8 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       # ── 6. Render dashboard ───────────────────────────────────────
-      - name: Render Quarto dashboard
-        run: quarto render dashboard.qmd --output-dir _site
+      - name: Render Quarto site
+        run: quarto render
 
       # ── 7. Deploy to GitHub Pages ─────────────────────────────────
       - name: Upload Pages artifact
