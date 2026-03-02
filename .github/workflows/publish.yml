@@ -28,12 +28,14 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
+      - name: Debug - List files
+        run: ls -R
 
       # ── 3. Fetch YouTube data ──────────────────────────────────────
       - name: Fetch YouTube data
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: python fetch_youtube_data.py
+        run: python fetch_youtube_data_updated.py
 
       # ── 4. Commit updated DB back to repo ─────────────────────────
       - name: Commit updated database
