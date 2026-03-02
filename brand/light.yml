@@ -1,0 +1,21 @@
+color:
+  palette:
+    light-grey: "#c5c5c5"
+    dark-grey: "#323232"
+    blue: "#3564b0"
+  foreground: dark-grey
+  background: white
+  primary: light-grey
+
+logo: 
+  images:
+    user-logo: 
+      path: logo.png
+      alt: ""
+  small: user-logo
+
+typography:
+  fonts:
+    - family: Atkinson Hyperlegible
+      source: google
+  base: Atkinson Hyperlegible

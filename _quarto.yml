@@ -3,15 +3,19 @@ project:
 
 website:
   navbar:
+    logo: "images/logo.png"
+    favicon: "images/icon.svg"
+    title: "ደ/ብርሃን ቅ/ሥላሴ ዳላስ ቴክሳስ"
+    #background: '#5a6573'
     search: false
-    contents:
-      - text: "Dashboard"
-        href: dashboard.qmd
+    left:
+      - text: "Engagement Analytics"
+        href: engagement_analytics.qmd
+      - text: "Trends and Performance"
+        href: trend_and_performance.qmd
+      - text: "Most Watched"
+        href: most_watched.qmd
 
-format:
+format: 
   html:
-    theme: [cosmo, styles.scss]
-    toc: true
-
-
-
+    theme: [custom.scss]

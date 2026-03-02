@@ -1,0 +1,427 @@
+---
+title: "ደ/ብርሃን ቅ/ሥላሴ ዳላስ ቴክሳስ"
+format: 
+  dashboard:
+    orientation: columns
+    fig-width: 10
+    fig-asp: 0.3
+brand:
+  light: brand/light.yml
+  dark: brand/dark.yml
+editor_options: 
+  chunk_output_type: console
+---
+
+```{=html}
+<head>
+      <style>
+        nav.navbar.navbar-expand-md.slim {
+          display: none;
+        }
+      </style>
+    </head>
+```
+
+
+```{=html}
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+.info-btn {
+  /* background: none;  <-- REMOVE OR COMMENT OUT THIS LINE */
+ /* background-color: #ffffff;  Add this line to make the outer circle white */
+  border: none;
+  /*color: #6c757d;  This is the color of the 'i' icon and its inner circle */
+  font-size: 1.2rem;
+  padding: 0.5rem; /* This padding creates the size of the white circle */
+  border-radius: 40%;
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 1050;
+  
+  background-color: #7e8f9e;
+  border: none;
+  color: #292a33;
+}
+
+.info-btn:hover {
+    background-color: #e9ecef;
+    color: #495057;
+    transform: scale(1.1);
+}
+
+.info-btn .fas { /* Target the Font Awesome icon directly */
+  /* vertical-align: middle; */ /* Try this first */
+  /* If 'middle' isn't enough, you might need a slight adjustment */
+  vertical-align: -3px;  /* Example: push down by 2 pixels */
+}
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.modal-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.section-title {
+    color: #495057;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.25rem;
+}
+
+.citation-text {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-left: 4px solid #007bff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+</style>
+
+<!-- Info Button -->
+<button id="infoBtn" class="info-btn" type="button" data-bs-toggle="modal" data-bs-target="#infoModal" title="About This Dashboard">
+    <i class="fas fa-info-circle"></i>
+</button>
+
+<!-- Info Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">
+                    <i class="fas fa-info-circle me-2"></i>
+                    About This Dashboard
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="section-title">
+                    <i class="fas fa-calendar-alt me-2"></i>Data Period
+                </div>
+                <p class="mb-3">Weekly update</p>
+                
+                <div class="section-title">
+                    <i class="fas fa-database me-2"></i>Data Source
+                </div>
+                <p class="mb-2">Data originally from:</p>
+                <p class="mb-2">
+                    The core of its functionality relies on the Google YouTube Data API and Google YouTube Analytics API.
+                    <br>
+                    <a href="https://developers.google.com/youtube/v3" target="_blank" class="text-decoration-none">
+                        <i class="fas fa-external-link-alt me-1"></i>
+                        https://developers.google.com/youtube/v3
+                    </a>
+                </p>
+                <p class="mb-3">
+                    Accessed via: 
+                    <a href="https://developers.google.com/youtube/v3" target="_blank" class="text-decoration-none">
+                        <i class="fas fa-external-link-alt me-1"></i>
+                        Google YouTube Data API
+                    </a>
+                </p>
+                
+                <div class="section-title">
+                    <i class="fas fa-quote-left me-2"></i>Citation
+                </div>
+                <p class="mb-2">To cite this dashboard:</p>
+                <div class="citation-text">
+                    Zeleke,Y.(2026). Debre Berhan Holy Trinity EOTC Dallas-TX Dashboard [github.io]. 
+                    <a href="https://github.com/yihun/eotc-youtube-channels" target="_blank" class="text-decoration-none">
+                        https://github.com/yihun/eotc-youtube-channels
+                    </a>
+                </div>
+                
+                <div class="section-title mt-4">
+                    <i class="fas fa-user-circle me-2"></i>Credits
+                </div>
+                <p class="mb-0">
+                    <strong>Designed by:</strong> Yihun Zeleke, 2026
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+```
+
+
+```{r}
+#| context: setup
+#| echo: false
+#| message: false
+#| inlcude: false
+
+library(dplyr)
+library(ggplot2)
+library(scales)
+library(lubridate)
+library(showtext)
+library(ggtext)
+library(echarts4r)
+library(stringr)
+library(plotly)
+library(htmltools)
+source(here::here("scripts/data_cleaning_001.R"))
+source(here::here("scripts/theme_and_function.R"))
+
+font_add_google("Libre Franklin", "franklin")
+showtext_auto()
+showtext_opts(dpi = 300)
+theme_set(theme_minimal(base_family = "Libre Fraklin"))
+dark_gregy = "#4E4E4E"
+
+```
+## Row - Plots: Themes {height="50%"}
+
+### Column - Monthly View Trends
+
+```{r}
+#| label: videos-monthly-trends
+#| fig-height: 3.5
+#| fig-width: 8
+
+videos <- videos |>
+  mutate(month = month(published_at, label = TRUE), year = year(published_at)) |> 
+  mutate(
+    hour_of_day = hour(published_at),
+    day_of_week = wday(published_at, label = TRUE, abbr = FALSE),
+    month = month(published_at, label = TRUE)
+  )
+
+trnd_plot1 <- videos %>%
+  group_by(hour_of_day) %>%
+  summarise(avg_views = mean(views, na.rm = TRUE), Count = n()) |>
+  ungroup() |> 
+  ggplot(aes(
+    x = factor(hour_of_day),
+    y = avg_views,
+    fill = Count,
+    text = paste(
+      'Hours of the Day:',
+      hour_of_day,
+      "\nVideos published:",
+      Count,
+      "\nAvg. Views: ",
+      label_number(scale_cut = scales::cut_short_scale())(avg_views)
+    )
+  )) +
+  geom_col() +
+  scale_fill_gradient(low = "#1A0045", high = "#7F4DA4") +
+  labs(
+    title = "Average Views by Hour of Publish (UTC)",
+    y = "Avg. Views by Hr",
+    x = "Hrs"
+  ) +
+  scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  guides(fill = "none")+
+  custom_theme()
+
+ggplotly(trnd_plot1, tooltip = "text") |>
+  config(displayModeBar = FALSE) |>
+  layout(
+    xaxis = list(
+      tickfont = list(size = 12)
+    ),
+    legend = list(font = list(size = 12))
+  )
+
+```
+
+
+### Column - Comment Sentiment: Most Popular Words
+
+```{r}
+
+#| label: sentiment-wordcloud
+#| fig-height: 3.5
+#| fig-width: 8
+
+trnd_plot2 <- videos |> 
+  group_by(day_of_week) |> 
+  summarise(avg_views = mean(views, na.rm = TRUE), Count = n()) |> 
+  ungroup() |> 
+  ggplot(aes(
+    x = factor(day_of_week),
+    y = avg_views,
+    fill = Count,
+    text = paste(
+      'Day of the Week:',
+      day_of_week,
+      "\nVideos published:",
+      Count,
+      "\nAvg. Views: ",
+      label_number(scale_cut = scales::cut_short_scale())(avg_views)
+    )
+  )) +
+  geom_col() +
+  scale_fill_gradient(low = "#191745ff", high = "#227ec9ff") +
+  coord_flip()+
+  labs(
+    title = "Average Views by Day of the Week",
+    y = "Avg. views by day",
+    x = "Day"
+  ) +
+  scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  guides(fill = "none") +
+  custom_theme()
+
+ggplotly(trnd_plot2, tooltip = "text") |>
+  config(displayModeBar = FALSE) |>
+  layout(
+    xaxis = list(
+      tickfont = list(size = 12)
+    ),
+    legend = list(font = list(size = 12))
+  )
+
+```
+
+## Row - charts {height="100%"}
+
+### Column - Total Views by Year {height="100%", scrolling="true"}
+
+```{r}
+#| label: views-year-chart
+#| fig-height: 8
+#| fig-width: 10
+#| echo: false
+#| warning: false
+#| out-width: "100%"
+
+month_order <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+videos_calendar <- videos |>
+  select(published_at, views) |> 
+  mutate(published_at = as.Date(published_at)) |> 
+  mutate(date = format(published_at , "%m-%d-%Y")) |> 
+  mutate(year = format(published_at, "%Y")) |> 
+  mutate(month = month(published_at, label = TRUE), .keep = "unused") |> 
+  mutate(
+    date = mdy(date),                     
+    date = format(date, "%Y-%m-%d") ) |> 
+   mutate(
+    date = as.Date(date),
+    month = factor(format(date, "%b"), levels = month_order),
+    week_of_month = ceiling(day(date) / 7),
+    weekday = wday(date, label = TRUE, abbr = TRUE, week_start = 1)
+  )
+  
+trnd_plot2 <- videos_calendar |> 
+  ggplot( aes(x = week_of_month, y = weekday, fill = views , 
+    text = paste("Week of Month:" , week_of_month,
+    "\nWeek Day:", weekday,
+    "\nView:", views,
+    "\nYear:", year))) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  facet_wrap(~ month, ncol = 3) +
+  scale_fill_gradient(low = "#af97c2ff", high = "#4e215fff",
+                        trans = "log10",
+                        labels = scales::comma,
+                        name = "Views") +
+  labs(
+    title = "Daily Views Heatmap",
+    x = "Week of Month",
+    y = NULL
+  ) +
+  theme(
+plot.title = element_text(hjust = 0.5),
+    legend.position = "none",
+    axis.text.x = element_blank(),
+  )
+
+# ggplotly(trnd_plot2,  tooltip = list("text")) |>
+#   config(displayModeBar = FALSE) |>
+#   layout(
+#     xaxis = list(
+#       tickfont = list(size = 12)
+#     ),
+#     legend = list(font = list(size = 12))
+#   )
+
+# Layout: 4 rows x 3 cols (fill vertically)
+n_col <- 3
+n_row <- 4
+month_positions <- data.frame(
+  month = month_order,
+  col   = rep(1:n_col, each = n_row),
+  row   = rep(1:n_row, times = n_col)
+)
+
+# Merge positions into your data
+plot_data <- videos_calendar |>
+  left_join(month_positions, by = "month")
+
+# Build subplot grid
+plots <- list()
+
+for (i in seq_along(month_order)) {
+  m <- month_order[i]
+  df_m <- plot_data |> filter(month == m)
+  
+  plots[[i]] <- plot_ly(
+    data = df_m,
+    x = ~week_of_month,
+    y = ~weekday,
+    z = ~log10(views + 1),
+    type = "heatmap",
+    colorscale = list(
+      c(0, "#b261f4ff"),
+      c(1, "#490363ff")
+    ),
+    showscale = FALSE,
+    text = ~paste("Week of Month:", week_of_month,
+                  "<br>Week Day:", weekday,
+                  "<br>Views:", scales::comma(views),
+                  "<br>Year:", year),
+    hoverinfo = "text"
+  ) |>
+    layout(
+      annotations = list(
+        list(text = m, 
+             x = 0.5, y = 1.0,
+             xref = "paper", 
+             yref = "paper",
+             xanchor = "center",
+             yanchor   = "bottom",
+             showarrow = FALSE, font = list(size = 13, color = "black"))
+      ),
+      xaxis = list(showticklabels = FALSE, showgrid = FALSE),
+      yaxis = list(showgrid = FALSE)
+    )
+}
+
+# Combine into subplot (4 rows x 3 cols, vertical fill)
+subplot(plots, nrows = n_row, shareX = FALSE, shareY = FALSE, margin = 0.05) |>
+  config(displayModeBar = FALSE) |>
+  layout(
+    title = list(text = "Daily Views Heatmap", x = 0.5),
+    showlegend = FALSE,
+    margin = list(l = 10, r = 10, t = 50, b = 10),
+    paper_bgcolor= "#4E4E4E",   # outer background (around the plot)
+    plot_bgcolor  = "#49444dff",    # inner background (behind the tiles)
+    font = list(
+      family = "Georgia",
+      color = "#a8a5aaff"
+    )
+  )
+```

@@ -1,5 +1,654 @@
 ---
-title: "EOTC Youtube Channes Analysis Dashboard"
+title: "ደ/ብርሃን ቅ/ሥላሴ ዳላስ ቴክሳስ"
+format: 
+  dashboard:
+    orientation: rows
+    fig-width: 10
+    fig-asp: 0.3
+brand:
+  light: brand/light.yml
+  dark: brand/dark.yml
+editor_options: 
+  chunk_output_type: console
 ---
 
-This is a Quarto website.
+```{=html}
+<head>
+      <style>
+        nav.navbar.navbar-expand-md.slim {
+          display: none;
+        }
+      </style>
+    </head>
+```
+
+```{=html}
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+.info-btn {
+  /* background: none;  <-- REMOVE OR COMMENT OUT THIS LINE */
+ /* background-color: #ffffff;  Add this line to make the outer circle white */
+  border: none;
+  /*color: #6c757d;  This is the color of the 'i' icon and its inner circle */
+  font-size: 1.2rem;
+  padding: 0.5rem; /* This padding creates the size of the white circle */
+  border-radius: 40%;
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 1050;
+  
+  background-color: #7e8f9e;
+  border: none;
+  color: #292a33;
+}
+
+.info-btn:hover {
+    background-color: #e9ecef;
+    color: #495057;
+    transform: scale(1.1);
+}
+
+.info-btn .fas { /* Target the Font Awesome icon directly */
+  /* vertical-align: middle; */ /* Try this first */
+  /* If 'middle' isn't enough, you might need a slight adjustment */
+  vertical-align: -3px;  /* Example: push down by 2 pixels */
+}
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.modal-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.section-title {
+    color: #495057;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.25rem;
+}
+
+.citation-text {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-left: 4px solid #007bff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+</style>
+
+<!-- Info Button -->
+<button id="infoBtn" class="info-btn" type="button" data-bs-toggle="modal" data-bs-target="#infoModal" title="About This Dashboard">
+    <i class="fas fa-info-circle"></i>
+</button>
+
+<!-- Info Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">
+                    <i class="fas fa-info-circle me-2"></i>
+                    About This Dashboard
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="section-title">
+                    <i class="fas fa-calendar-alt me-2"></i>Data Period
+                </div>
+                <p class="mb-3">Weekly update</p>
+                
+                <div class="section-title">
+                    <i class="fas fa-database me-2"></i>Data Source
+                </div>
+                <p class="mb-2">Data originally from:</p>
+                <p class="mb-2">
+                    The core of its functionality relies on the Google YouTube Data API and Google YouTube Analytics API.
+                    <br>
+                    <a href="https://developers.google.com/youtube/v3" target="_blank" class="text-decoration-none">
+                        <i class="fas fa-external-link-alt me-1"></i>
+                        https://developers.google.com/youtube/v3
+                    </a>
+                </p>
+                <p class="mb-3">
+                    Accessed via: 
+                    <a href="https://developers.google.com/youtube/v3" target="_blank" class="text-decoration-none">
+                        <i class="fas fa-external-link-alt me-1"></i>
+                        Google YouTube Data API
+                    </a>
+                </p>
+                
+                <div class="section-title">
+                    <i class="fas fa-quote-left me-2"></i>Citation
+                </div>
+                <p class="mb-2">To cite this dashboard:</p>
+                <div class="citation-text">
+                    Zeleke,Y.(2026). Debre Berhan Holy Trinity EOTC Dallas-TX Dashboard [github.io]. 
+                    <a href="https://github.com/yihun/eotc-youtube-channels" target="_blank" class="text-decoration-none">
+                        https://github.com/yihun/eotc-youtube-channels
+                    </a>
+                </div>
+                
+                <div class="section-title mt-4">
+                    <i class="fas fa-user-circle me-2"></i>Credits
+                </div>
+                <p class="mb-0">
+                    <strong>Designed by:</strong> Yihun Zeleke, 2026
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+```
+
+```{r}
+#| context: setup
+#| echo: false
+#| message: false
+#| inlcude: false
+
+library(dplyr)
+library(ggplot2)
+library(gt)
+library(bslib)
+library(bsicons)
+library(scales)
+library(lubridate)
+library(showtext)
+library(ggtext)
+library(tidytext)
+library(echarts4r)
+library(stringr)
+library(plotly)
+source(here::here("scripts/data_cleaning_001.R"))
+source(here::here("scripts/theme_and_function.R"))
+
+font_add_google("Libre Franklin", "franklin")
+showtext_auto()
+showtext_opts(dpi = 300)
+theme_set(theme_minimal(base_family = "Libre Fraklin"))
+
+format_number <- function(x, digits = 2) {
+  case_when(
+    abs(x) >= 1e9 ~ paste0(round(x / 1e9, digits), "B"),
+    abs(x) >= 1e6 ~ paste0(round(x / 1e6, digits), "M"),
+    abs(x) >= 1e3 ~ paste0(round(x / 1e3, digits), "K"),
+    TRUE ~ as.character(round(x, digits))
+  )
+}
+```
+
+## Row - Indicators Values {hieght="1%"}
+
+```{r}
+#| expandable: false
+#| label: total-subsribers
+
+# subscribe_bell <- sprintf(
+#   '
+# <style>
+#   @keyframes pulse {
+#     0%% { r: 3; opacity: 0.8; }
+#     50%% { r: 4.5; opacity: 0.4; }
+#     100%% { r: 3; opacity: 0.8; }
+#   }
+
+#   .notify-dot {
+#     animation: pulse 1.5s infinite;
+#     transform-origin: center;
+#   }
+# </style>
+
+# <svg xmlns="http://www.w3.org/2000/svg"
+#      width="1.5em" height="1.5em"
+#      fill="currentColor"
+#      class="bi bi-bell"
+#      viewBox="0 0 16 16">
+#   <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917z"/>
+#   <circle cx="10" cy="6.5" r="3" fill="#ba1bcfff" class="notify-dot"/>
+# </svg>
+# '
+# )
+
+subscribe_bell <- sprintf(
+  '
+<style>
+  @keyframes pulse {
+    0%% { r: 3; opacity: 0.8; }
+    50%% { r: 4.5; opacity: 0.4; }
+    100%% { r: 3; opacity: 0.8; }
+  }
+
+  .notify-dot {
+    animation: pulse 1.5s infinite;
+    transform-origin: center;
+  }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1.2em" height="1.2em"
+     fill="currentColor"
+     class="bi bi-bell"
+     viewBox="0 0 16 16">
+  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917z"/>
+  <!-- Move the pulse circle to the bottom of the bell -->
+  <circle cx="8" cy="13" r="2" fill="#ba1bcfff" class="notify-dot"/>
+</svg>
+'
+)
+
+
+value_box(
+  title = "Total Subscribers",
+  # value = scales::comma(channel_stats$subscribers),
+  value = format_number(channel_stats$subscribers),
+  showcase = htmltools::HTML(subscribe_bell),
+  class = "border noExpandable",
+  showcase_layout = c("top right")
+)
+```
+
+
+```{r}
+#| label: avarage-weekly-views
+
+tv_views_icon <- sprintf(
+  '
+<style>
+  @keyframes pulse-bar {
+    0%% { y: 5.5px; height: 2px; opacity: 0.8; }
+    50%% { y: 3.5px; height: 6px; opacity: 0.4; }
+    100%% { y: 5.5px; height: 2px; opacity: 0.8; }
+  }
+
+  .tv-bar {
+    fill: #2b0ba1ff;
+    animation: pulse-bar 1.5s infinite ease-in-out;
+  }
+
+  .tv-bar:nth-child(1) { animation-delay: 0s; }
+  .tv-bar:nth-child(2) { animation-delay: 0.3s; }
+  .tv-bar:nth-child(3) { animation-delay: 0.6s; }
+  .tv-bar:nth-child(4) { animation-delay: 0.9s; }
+  .tv-bar:nth-child(5) { animation-delay: 1.2s; }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1.5em" height="1.5em"
+     fill="currentColor"
+     class="bi bi-tv"
+     viewBox="0 0 16 16">
+  <!-- TV body with white fill -->
+  <rect x="2" y="3" width="12" height="8" rx="1" ry="1" stroke="currentColor" fill="white" stroke-width="1"/>
+  <!-- TV stand -->
+  <line x1="6" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1"/>
+  <line x1="8" y1="12" x2="8" y2="13" stroke="currentColor" stroke-width="1"/>
+  <!-- Animated "views" bars -->
+  <rect x="3.5" y="5.5" width="1" height="2" class="tv-bar"/>
+  <rect x="5"   y="5.5" width="1" height="2" class="tv-bar"/>
+  <rect x="6.5" y="5.5" width="1" height="2" class="tv-bar"/>
+  <rect x="8"   y="5.5" width="1" height="2" class="tv-bar"/>
+  <rect x="9.5" y="5.5" width="1" height="2" class="tv-bar"/>
+</svg>
+'
+)
+
+value_box(
+  title = "Average Weekly Views",
+  value = format_number(mean(videos$views)),
+  showcase = htmltools::HTML(tv_views_icon),
+  class = "border noExpandable",
+  showcase_layout = c("top right"),
+)
+```
+
+```{r}
+
+#| expandable: false
+#| label: total-views
+
+eye_icon <- sprintf(
+  '
+<style>
+  @keyframes blink {
+    0%%, 20%%, 40%%, 60%%, 80%%, 100%% { opacity: 1; }
+    10%%, 30%%, 50%%, 70%%, 90%% { opacity: 0; }
+  }
+  .pupil {
+    animation: blink 5s infinite;
+    transform-origin: center;
+  }
+</style>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1.5em" height="1.5em"
+     fill="currentColor"
+     class="bi bi-eye"
+     viewBox="0 0 16 16">
+  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8a13.133 13.133 0 0 1-1.66 2.043C11.879 11.332 10.12 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.133 13.133 0 0 1 1.172 8z"/>
+  <path class="pupil" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+'
+)
+
+value_box(
+  title = "Total Views",
+  showcase = htmltools::HTML(eye_icon),
+  value = format_number(channel_stats$total_views),
+  class = "border noExpandable",
+  showcase_layout = c("top right")
+)
+
+```
+
+```{r}
+
+#| label: total-vides
+
+youtube_icon = sprintf(
+  '
+<style>
+  @keyframes blink {
+    0%%, 20%%, 40%%, 60%%, 80%%, 100%% { opacity: 1; }
+    10%%, 30%%, 50%%, 70%%, 90%% { opacity: 0; }
+  }
+  .play-button {
+    fill: #ff0000;
+    animation: blink 3.5s infinite;
+    transform-origin: center;
+  }
+  .background {
+    fill: #C0C0C0;  /* medium gray */
+    rx: 4;
+    ry: 4;
+  }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="3.5em" height="3.5em" viewBox="0 0 24 24" >
+  <!-- Background rounded rectangle -->
+  <rect class="background" x="1" y="6" width="22" height="12" rx="4" ry="4" />
+  <!-- Play triangle -->
+  <polygon class="play-button" points="10,9 16,12 10,15" />
+</svg>
+'
+)
+
+value_box(
+  title = "Total Videos",
+  showcase = htmltools::HTML(youtube_icon),
+  value = comma(1397),
+  class = "border noExpandable",
+  showcase_layout = c("top right")
+)
+```
+
+## Row - Plots: Themes {height="51%"}
+
+### Column - Monthly View Trends
+
+```{r}
+#| label: videos-monthly-trends
+#| fig-height: 3.5
+#| fig-width: 8
+
+videos <- videos |>
+  mutate(month = month(published_at, label = TRUE), year = year(published_at))
+
+dark_gregy = "#4E4E4E"
+custom_colors <- c(
+  "2019" = "#ad2831",
+  "2020" = "#845EC2",
+  "2021" = "#ff5b00",
+  "2022" = "#ff8f00",
+  "2023" = "#ffc302",
+  "2024" = "#fdae61",
+  "2025" = "#1f77b4"
+)
+
+base_plot_1 <- videos |>
+  group_by(month, year) |>
+  summarise(total_view = sum(views)) |>
+  ungroup() |>
+  filter(year >= 2019) |>
+  ggplot(aes(
+    x = factor(month),
+    y = total_view,
+    group = year,
+    color = factor(year),
+    text = paste(
+      'Year:',
+      year,
+      '\nMonth:',
+      month,
+      "\nTotal Viwes: ",
+      label_number(scale_cut = scales::cut_short_scale())(total_view)
+    )
+  )) +
+  geom_line(linewidth = 1) +
+  geom_point(shape = 16, alpha = 0.75, stroke = 2) +
+  labs(x = "", y = "Total Views", fill = "Year", color = "Year") +
+  scale_color_manual(values = custom_colors) +
+  scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  theme(
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(color = 'white'),
+    text = element_text(size = 15, color = "white"),
+    axis.ticks = element_blank(),
+    plot.background = element_rect(fill = dark_gregy, color = dark_gregy),
+    axis.text.y = element_text(color = "white"),
+    strip.text = element_text(color = "white"),
+    axis.title.y = element_text(colour = "white"),
+    axis.text.x = element_text(color = "white"),
+    strip.background = element_rect(fill = "#E2E6ED50", color = "white"),
+    panel.background = element_rect(fill = dark_gregy)
+  )
+
+# base_plot_1
+
+ggplotly(base_plot_1, tooltip = 'text') |>
+  config(displayModeBar = FALSE) |>
+  layout(
+    xaxis = list(
+      tickfont = list(size = 10)
+    ),
+    legend = list(font = list(size = 12)),
+    title = "Monthly View Trends"
+  )
+
+```
+
+
+### Column - Comment Sentiment: Most Popular Words
+
+```{r}
+
+#| label: sentiment-wordcloud
+#| fig-height: 3.5
+#| fig-width: 8
+
+clean_text = comments |>
+  mutate(
+    cleaned = comment |>
+      str_remove_all("http[s]?://\\S+") |> # Remove URLs
+      str_remove_all("[[:digit:]]+") |> # Remove numbers
+      #str_remove_all("[A-Za-z]+") |>   # Remove English
+      str_remove_all("[[:punct:]]") |> # Remove punctuation
+      str_remove_all("[\\p{So}\\p{Cn}]") |> # Remove symbols/emojis
+      str_squish() # Remove extra spaces
+  )
+
+
+word_freq <- clean_text %>%
+  unnest_tokens(word, cleaned, token = "words") %>%
+  #filter(str_detect(word, "[\u1200-\u137F]")) %>%  # Keep only Amharic script
+  count(word, sort = TRUE) |>
+  filter(n > 1)
+
+# plot
+word_freq |>
+  e_color_range(n, color) |>
+  e_charts() |>
+  e_cloud(word, n, color, shape = "circle", sizeRange = c(5, 100)) |>
+  e_theme('dark') |>
+  e_title("Comment Sentiment: Most Popular Words", left = "center", top = "1%")
+
+```
+
+## Row - charts {height="49%"}
+
+### Column - Total Views by Year
+
+```{r}
+#| label: views-year-chart
+#| fig-height: 3.5
+#| fig-width: 8
+
+year_colors = c(
+  "2018" = "#845ec2",
+  "2019" = "#ad2831",
+  "2020" = "#845EC2",
+  "2021" = "#ff5b00",
+  "2022" = "#ff8f00",
+  "2023" = "#ffc302",
+  "2024" = "#fdae61",
+  "2025" = "#1f77b4"
+)
+
+base_plot_2 <- videos |>
+  group_by(year) |>
+  summarise(tot_views = sum(views)) |>
+  ungroup() |>
+  mutate(year = factor(year)) |>
+  ggplot(aes(
+    year,
+    tot_views,
+    fill = year,
+    text = paste(
+      'Year:',
+      year,
+      "\nTotal View: ",
+      label_number(scale_cut = scales::cut_short_scale())(tot_views)
+    )
+  )) +
+  geom_col() +
+  labs(title = "", y = "Total Views", x = "") +
+  scale_fill_manual(values = year_colors) +
+  scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  guides(fill = "none") +
+  custom_theme()
+
+# base_plot_2
+
+ggplotly(base_plot_2, tooltip = 'text') |>
+  config(displayModeBar = FALSE) |>
+  layout(
+    xaxis = list(
+      tickfont = list(size = 12)
+    ),
+    #legend = list(font = list(size = 12)),
+    title = "Total Views by Year"
+  )
+
+```
+
+### Column - Views by Service Type
+
+```{r}
+#| label: views-by-service
+#| fig-height: 4.5
+#| fig-width: 8
+
+base_plot_3 <- videos |>
+  group_by(service_cat) |>
+  summarise(total_view = sum(views)) |>
+  ungroup() |>
+  mutate(
+    service_cat = forcats::fct_reorder(service_cat, total_view),
+    highlight = ifelse(service_cat != "Other Services", "#1261A0", "grey17")
+  ) |>
+  mutate(
+    clr = case_when(
+      service_cat == "Other Services" ~ '#1A0045',
+      service_cat == "Easter Season" ~ "#260054",
+      service_cat == "Miltan" ~ "#330064",
+      service_cat == "Wudasie Mariam" ~ "#3F0073",
+      service_cat == "Sermon/Teaching" ~ "#9066AF",
+      service_cat == "Tselot Zeserk" ~ "#7F4DA4"
+    )
+  ) |>
+  ggplot(aes(
+    x = service_cat,
+    y = total_view,
+    fill = clr,
+    text = paste(
+      'Service:',
+      service_cat,
+      "\nTotal Viwes: ",
+      label_number(scale_cut = scales::cut_short_scale())(total_view)
+    )
+  )) +
+  geom_col() +
+  scale_fill_identity() +
+  labs(title = "Views by Service Type", y = "Total Views", x = "") +
+  scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
+  ) +
+  guides(fill = "none") +
+  coord_flip() +
+  custom_theme()
+
+# base_plot_3
+
+ggplotly(base_plot_3, tooltip = "text") |>
+  config(displayModeBar = FALSE) |>
+  layout(
+    xaxis = list(
+      tickfont = list(size = 8)
+    ),
+    legend = list(font = list(size = 8))
+    #  title = "Total Views by Year"
+  ) |>
+  add_annotations(
+    x = 1,
+    y = 0.98, # Position (relative to plot area)
+    xref = "paper",
+    yref = "paper",
+    text = "ℹ️", # Info icon
+    showarrow = FALSE,
+    font = list(size = 20),
+    bgcolor = "rgba(255, 255, 255, 0.8)",
+    bordercolor = "white",
+    borderwidth = 1,
+    hovertext = paste(
+      "<b>Other Services:</b><br>",
+      "There are different service themes under this category \nwhich I couldn't classify into a known category"
+    ),
+    hoverlabel = list(
+      bgcolor = "white",
+      bordercolor = "black",
+      font = list(size = 12)
+    )
+  )
+
+```
