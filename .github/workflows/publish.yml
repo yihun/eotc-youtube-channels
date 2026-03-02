@@ -6,25 +6,41 @@ on:
   workflow_dispatch: # Allow manual runs from the Actions tab
 
 permissions:
-  contents: write
-  pages: write
+  contents: write # Needed to commit the updated DB back to the repo
+  pages: write # Needed to deploy to GitHub Pages
   id-token: write
 
 jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
-    environment: github-pages # <-- Required for deploy-pages@v4
 
     steps:
-      # ── 1️⃣ Checkout repository ───────────────────────────────────
+      # ── 1. Checkout ────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # ── 2️⃣ Set up R and restore renv dependencies ───────────────
+      # ── 2️⃣ Set up R and system dependencies ──────────────────────
       - uses: r-lib/actions/setup-r@v2
+
+      - name: Install R system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libgit2-dev \
+            libpng-dev \
+            libjpeg-dev \
+            libtiff-dev \
+            libfontconfig1-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libfreetype6-dev \
+            pkg-config
+
       - uses: r-lib/actions/setup-renv@v2
 
-      # ── 3️⃣ Set up Python ─────────────────────────────────────────
+      # ── 2. Python setup ────────────────────────────────────────────
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -33,31 +49,34 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
+      - name: Debug - List files
+        run: ls -R
 
-      # ── 4️⃣ Fetch YouTube data ────────────────────────────────────
+      # ── 3. Fetch YouTube data ──────────────────────────────────────
       - name: Fetch YouTube data
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python fetch_youtube_data_updated.py
 
-      # ── 5️⃣ Commit updated database (only if changed) ───────────
+      # ── 4. Commit updated DB back to repo ─────────────────────────
       - name: Commit updated database
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add eotc_youtube_data.db
+          # Only commit if the DB actually changed
           git diff --cached --quiet || git commit -m "chore: update YouTube data [skip ci]"
           git push
 
-      # ── 6️⃣ Set up Quarto ─────────────────────────────────────────
+      # ── 5. Quarto setup ───────────────────────────────────────────
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      # ── 7️⃣ Render the full multi-page site ──────────────────────
+      # ── 6. Render dashboard ───────────────────────────────────────
       - name: Render Quarto site
         run: quarto render
 
-      # ── 8️⃣ Deploy to GitHub Pages ───────────────────────────────
+      # ── 7. Deploy to GitHub Pages ─────────────────────────────────
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
