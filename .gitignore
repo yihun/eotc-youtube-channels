@@ -5,6 +5,6 @@
 .Renviron
 
 /.quarto/
-/_site/
+# /_site/
 /data/
 .env
