@@ -1,6 +1,5 @@
-### <a href="https://github.com/yihun/eotc-youtube-channels" target="_blank" rel="noopener noreferrer">
-  EOTC Debre Berhan YouTube Channel Dashboard
-</a>
+### <a href="https://yihun.github.io/eotc-youtube-channels/" target="_blank" rel="noopener noreferrer">
+  EOTC Debre Berhan YouTube Channel Dashboard </a>
 
 This project automatically collects, stores, and visualizes YouTube channel data including:
 - Views and engagement trends
