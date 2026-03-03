@@ -1,7 +1,7 @@
 /*-- scss:defaults --*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-$font-family-sans-serif: "Inter", sans-serif;
+// $font-family-sans-serif: "Inter", sans-serif;
 
 .navbar-logo {
   max-height: 48px !important;
@@ -267,18 +267,23 @@ div.card.bslib-value-box.border {
 
 .navbar-dark .navbar-brand,
 .navbar[data-bs-theme="dark"] .navbar-brand {
-  // font-size: 48px;
   font-weight: bold;
-  /* Define the gradient: Purple -> Yellow -> Green -> Blue */
   background: linear-gradient(to right, #800080, #FFFF00, #008000, #4284eeff);
-
-  /* Clip the background to the text */
   -webkit-background-clip: text;
   background-clip: text;
-
-  /* Make the actual text transparent so the gradient shows through */
   color: transparent;
-
   /* Optional: Ensure Amharic characters render clearly */
   font-family: "Abyssinica SIL", "Nyala", sans-serif;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.quarto-dashboard .bslib-value-box .value-box-value {
+  font-family: sans-serif !important;
 }
