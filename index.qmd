@@ -193,6 +193,7 @@ format_number <- function(x, digits = 2) {
     TRUE ~ as.character(round(x, digits))
   )
 }
+
 ```
 
 ## Row - Indicators Values {hieght="1%"}
@@ -534,7 +535,8 @@ value_box(
 videos <- videos |>
   mutate(month = month(published_at, label = TRUE), year = year(published_at))
 
-dark_gregy = "#4E4E4E"
+
+dark_gregy = "#1e2a45"
 custom_colors <- c(
   "2019" = "#ad2831",
   "2020" = "#845EC2",
@@ -578,11 +580,15 @@ base_plot_1 <- videos |>
     text = element_text(size = 15, color = "white"),
     axis.ticks = element_blank(),
     plot.background = element_rect(fill = dark_gregy, color = dark_gregy),
+    panel.grid.minor.y = element_blank(), # Remove minor y-axis grid lines
+    panel.grid.major.y = element_line(color = "#30384d", linewidth = 0.05),
+    panel.grid.minor.x = element_blank(), # Remove minor x-axis grid lines
+    panel.grid.major.x = element_line(color = "#30384d", linewidth = 0.05),
+    plot.title = element_text(hjust = 0.5, face = 'bold'),
     axis.text.y = element_text(color = "white"),
     strip.text = element_text(color = "white"),
     axis.title.y = element_text(colour = "white"),
     axis.text.x = element_text(color = "white"),
-    strip.background = element_rect(fill = "#E2E6ED50", color = "white"),
     panel.background = element_rect(fill = dark_gregy)
   )
 

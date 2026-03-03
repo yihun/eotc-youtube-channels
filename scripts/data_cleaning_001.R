@@ -4,7 +4,8 @@ library(DBI)
 library(RSQLite)
 library(dplyr)
 library(stringr)
-
+# set plot background
+dark_gregy = "#1e2a45"
 # Dallas Debre Miheret St Micheal=1 and Debre Berhan Holy Trinity EOTC=2
 mydb_conn <- dbConnect(RSQLite::SQLite(), "eotc_youtube_data.db")
 

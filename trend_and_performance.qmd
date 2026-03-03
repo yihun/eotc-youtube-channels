@@ -183,7 +183,7 @@ font_add_google("Libre Franklin", "franklin")
 showtext_auto()
 showtext_opts(dpi = 300)
 theme_set(theme_minimal(base_family = "Libre Fraklin"))
-dark_gregy = "#4E4E4E"
+dark_gregy = "#1e2a45"
 
 ```
 ## Row - Plots: Themes {height="50%"}
@@ -417,8 +417,9 @@ subplot(plots, nrows = n_row, shareX = FALSE, shareY = FALSE, margin = 0.05) |>
     title = list(text = "Daily Views Heatmap", x = 0.5),
     showlegend = FALSE,
     margin = list(l = 10, r = 10, t = 50, b = 10),
-    paper_bgcolor= "#4E4E4E",   # outer background (around the plot)
+    # paper_bgcolor= "#4E4E4E",   # outer background (around the plot)
     plot_bgcolor  = "#49444dff",    # inner background (behind the tiles)
+    paper_bgcolor = "#1e2a45",
     font = list(
       family = "Georgia",
       color = "#a8a5aaff"

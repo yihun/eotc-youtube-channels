@@ -287,3 +287,30 @@ div.card.bslib-value-box.border {
 .quarto-dashboard .bslib-value-box .value-box-value {
   font-family: sans-serif !important;
 }
+
+
+//  Testing 
+
+.navbar {
+  background-color: #39274e !important;
+  // color: #353535 !important;
+  color: #908e8e !important;
+}
+
+#quarto-content {
+  background-color: #262148 !important;
+}
+
+.card {
+  --bs-card-bg: #4E4E4E !important;
+  color: #282e35;
+  border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+
+}
+
+.card {
+  --bs-card-bg: #100c2a !important;
+  color: #282e35;
+  border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+
+}

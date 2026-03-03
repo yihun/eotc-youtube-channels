@@ -184,7 +184,7 @@ font_add_google("Libre Franklin", "franklin")
 showtext_auto()
 showtext_opts(dpi = 300)
 theme_set(theme_minimal(base_family = "Libre Fraklin"))
-dark_gregy = "#4E4E4E"
+dark_gregy = "#1e2a45"
 ```
 
 ## Column - Top 10 high engagement rate table {width="50%"}
