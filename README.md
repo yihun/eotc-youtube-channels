@@ -1,6 +1,6 @@
-## EOTC YouTube Channels Dashboard
-
-Interactive analytics dashboard for the EOTC Debre Berhan YouTube channel.
+### <a href="https://github.com/yihun/eotc-youtube-channels" target="_blank" rel="noopener noreferrer">
+  EOTC Debre Berhan YouTube Channel Dashboard
+</a>
 
 This project automatically collects, stores, and visualizes YouTube channel data including:
 - Views and engagement trends
