@@ -1,268 +1,1089 @@
+// /*-- scss:defaults --*/
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+// // $font-family-sans-serif: "Inter", sans-serif;
+
+// .navbar-logo {
+//   max-height: 48px !important;
+//   min-height: 32px !important;
+//   //padding-right: 1px !important;
+//   object-fit: cover;
+//   margin-right: 0.2em;
+// }
+
+// .navbar {
+//   background-color: #2e2e35 !important;
+//   color: rgb(53.19, 53.19, 53.19) !important;
+// }
+
+// #quarto-content {
+//   background-color: #626262 !important;
+// }
+
+// //  Value box 
+// .value-box-grid {
+//   background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
+// }
+
+// p.value-box-value {
+//   color: white !important;
+// }
+
+// p.value-box-title {
+//   color: white !important;
+// }
+
+// div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
+//   border-color: #3e5578 !important; //
+// }
+
+// .card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
+//   display: none;
+// }
+
+// .card.noExpandable .bslib-full-screen-enter {
+//   display: none !important;
+// }
+
+// // ==== To chnage the bg of any card
+// .card {
+//   --bs-card-bg: #4E4E4E !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+
+// }
+
+// // Video selection dropdown
+// .oi-3a86ea button,
+// .oi-3a86ea input,
+// .oi-3a86ea select,
+// .oi-3a86ea table,
+// .oi-3a86ea textarea {
+//   color: inherit;
+//   font: inherit;
+//   box-sizing: border-box;
+//   background-color: rgba(80, 47, 137, 1) !important;
+//   border-radius: 5px;
+//   color: rgba(243, 220, 243, 1) !important;
+//   font-size: 12px !important;
+// }
+
+// // For select mezmure
+// label {
+//   display: inline-block;
+//   color: white;
+//   font-size: 12px !important;
+// }
+
+// .quarto-dashboard .card.valuebox,
+// .quarto-dashboard .card.bslib-value-box {
+//   min-height: 1rem;
+//   max-height: 150px;
+// }
+
+// .bslib-value-box.showcase-top-right .value-box-grid .value-box-area {
+//   grid-area: left;
+//   align-self: end;
+//   margin-top: -25px;
+// }
+
+// .navbar-logo {
+//   max-height: 48px !important;
+//   min-height: 32px !important;
+//   //padding-right: 1px !important;
+//   object-fit: cover;
+//   margin-right: 0.2em;
+// }
+
+// .navbar {
+//   background-color: #2e2e35 !important;
+//   color: rgb(53.19, 53.19, 53.19) !important;
+// }
+
+// #quarto-content {
+//   background-color: #626262 !important;
+// }
+
+// //  Value box 
+// .value-box-grid {
+//   background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
+// }
+
+// p.value-box-value {
+//   color: white !important;
+// }
+
+// p.value-box-title {
+//   color: white !important;
+// }
+
+// div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
+//   border-color: #3e5578 !important; //
+// }
+
+// .card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
+//   display: none;
+// }
+
+// .card.noExpandable .bslib-full-screen-enter {
+//   display: none !important;
+// }
+
+
+// // ==== To chnage the bg of any card
+// .card {
+
+//   --bs-card-bg: #1c1b1bff !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+
+// }
+
+// // Video selection dropdown
+// .oi-3a86ea button,
+// .oi-3a86ea input,
+// .oi-3a86ea select,
+// .oi-3a86ea table,
+// .oi-3a86ea textarea {
+//   background-color: rgba(80, 47, 137, 1) !important;
+//   border-radius: 5px;
+//   color: rgba(243, 220, 243, 1) !important;
+//   font-size: 12px !important;
+// }
+
+// // For select mezmure
+// label {
+//   display: inline-block;
+//   color: white;
+//   font-size: 12px !important;
+// }
+
+
+// // overrides all bslib spacing gaps
+// * {
+//   --bslib-spacer: 4px !important;
+// }
+
+// #quarto-content {
+//   // background-color: #626262 !important;
+//   background-color: #1c1c38ff !important;
+//   padding-top: 0 !important; // add this line
+//   margin-top: 0 !important;
+// }
+
+// .quarto-dashboard #quarto-content.quarto-dashboard-content {
+//   padding: 0rem !important;
+// }
+
+// // Top value boxes border color 
+
+// div.card.bslib-value-box.border {
+//   border: 1px solid #425160ff !important;
+// }
+
+// .quarto-dashboard #quarto-header #quarto-dashboard-header {
+//   border-top: solid 0px rgb(98 98 98) !important;
+//   border-bottom: solid 0px rgb(98 98 98) !important;
+// }
+
+// .quarto-dashboard #quarto-header #quarto-dashboard-header {
+//   border-top: solid 0px rgb(98 98 98) !important;
+//   border-bottom: solid 0px rgb(98 98 98) !important;
+// }
+
+// :root {
+//   --bs-border-color: #425160ff;
+// }
+
+// #custom .gt_table {
+//   font-size: 12px;
+// }
+
+// .html-fill-container>:not(.html-fill-item) {
+//   flex: 0 0 auto;
+//   color: #f9f9f9;
+//   font-size: 12px;
+// }
+
+// // Rounded card for plots
+// .card .html-widget {
+//   border-radius: 8px !important;
+//   overflow: hidden !important;
+// }
+
+// .html-widget,
+// .plotly,
+// .plot-container {
+//   height: 100% !important;
+// }
+
+
+
+// // ==========
+
+// .navbar-dark,
+// .navbar[data-bs-theme="purple"] {
+//   color: #fff;
+//   /* navbar text color */
+// }
+
+// .navbar-dark .navbar-brand,
+// .navbar[data-bs-theme="dark"] .navbar-brand {
+//   color: #d9cde1ff;
+//   /* brand color */
+// }
+
+// .navbar-dark .navbar-brand:hover,
+// .navbar[data-bs-theme="dark"] .navbar-brand:hover {
+//   color: #8ed4eeff;
+//   /* brand hover color */
+// }
+
+// .navbar-dark .nav-link:hover,
+// .navbar[data-bs-theme="dark"] .nav-link:hover {
+//   color: #6ea39dff !important;
+//   /* link hover color */
+// }
+
+// .navbar-dark .nav-link.active,
+// .navbar[data-bs-theme="dark"] .nav-link.active {
+//   color: #352e9aff;
+//   /* active links */
+// }
+
+// .navbar-dark .navbar-toggler,
+// .navbar[data-bs-theme="dark"] .navbar-toggler {
+//   border-color: #fff;
+//   /* toggler border */
+// }
+
+// .nav-link.active {
+//   color: #83ebfbff !important;
+// }
+
+// .nav-link {
+//   color: rgb(212, 209, 213) !important;
+// }
+
+// .navbar-dark .navbar-brand,
+// .navbar[data-bs-theme="dark"] .navbar-brand {
+//   font-weight: bold;
+//   background: linear-gradient(to right, #800080, #FFFF00, #008000, #4284eeff);
+//   -webkit-background-clip: text;
+//   background-clip: text;
+//   color: transparent;
+//   /* Optional: Ensure Amharic characters render clearly */
+//   font-family: "Abyssinica SIL", "Nyala", sans-serif;
+// }
+
+// .navbar-toggler-icon {
+//   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+// }
+
+// .navbar-toggler {
+//   border-color: rgba(255, 255, 255, 0.6) !important;
+// }
+
+// .quarto-dashboard .bslib-value-box .value-box-value {
+//   font-family: sans-serif !important;
+// }
+
+
+// //  Testing 
+
+// .navbar {
+//   background-color: #39274e !important;
+//   // color: #353535 !important;
+//   color: #908e8e !important;
+// }
+
+// #quarto-content {
+//   background-color: #262148 !important;
+// }
+
+// .card {
+//   --bs-card-bg: #4E4E4E !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+
+// }
+
+// .card {
+//   --bs-card-bg: #100c2a !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+
+// }
+
+// ======================// <>
+/*-- scss:defaults --*/
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+// // $font-family-sans-serif: "Inter", sans-serif;
+
+// // =============================================================================
+// // ROOT & GLOBAL
+// // =============================================================================
+
+// :root {
+//   --bs-border-color: #425160ff;
+// }
+
+// * {
+//   --bslib-spacer: 4px !important;
+// }
+
+// // =============================================================================
+// // NAVBAR
+// // =============================================================================
+
+// .navbar {
+//   background-color: #39274e !important;
+//   color: #908e8e !important;
+// }
+
+// .navbar-logo {
+//   max-height: 48px !important;
+//   min-height: 32px !important;
+//   object-fit: cover;
+//   margin-right: 0.2em;
+// }
+
+// .navbar-dark,
+// .navbar[data-bs-theme="purple"] {
+//   color: #fff;
+// }
+
+// .navbar-dark .navbar-brand,
+// .navbar[data-bs-theme="dark"] .navbar-brand {
+//   font-weight: bold;
+//   background: linear-gradient(to right, #800080, #FFFF00, #008000, #4284eeff);
+//   -webkit-background-clip: text;
+//   background-clip: text;
+//   color: transparent;
+//   font-family: "Abyssinica SIL", "Nyala", sans-serif;
+// }
+
+// .navbar-dark .navbar-brand:hover,
+// .navbar[data-bs-theme="dark"] .navbar-brand:hover {
+//   color: #8ed4eeff;
+// }
+
+// .navbar-dark .nav-link:hover,
+// .navbar[data-bs-theme="dark"] .nav-link:hover {
+//   color: #6ea39dff !important;
+// }
+
+// .navbar-dark .nav-link.active,
+// .navbar[data-bs-theme="dark"] .nav-link.active {
+//   color: #352e9aff;
+// }
+
+// .navbar-dark .navbar-toggler,
+// .navbar[data-bs-theme="dark"] .navbar-toggler {
+//   border-color: #fff;
+// }
+
+// .navbar-toggler {
+//   border-color: rgba(255, 255, 255, 0.6) !important;
+// }
+
+// .navbar-toggler-icon {
+//   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+// }
+
+// .nav-link {
+//   color: rgb(212, 209, 213) !important;
+// }
+
+// .nav-link.active {
+//   color: #83ebfbff !important;
+// }
+
+// // =============================================================================
+// // LAYOUT & CONTENT
+// // =============================================================================
+
+// #quarto-content {
+//   background-color: #262148 !important;
+//   padding-top: 0 !important;
+//   margin-top: 0 !important;
+// }
+
+// .quarto-dashboard #quarto-content.quarto-dashboard-content {
+//   padding: 0rem !important;
+// }
+
+// .quarto-dashboard #quarto-header #quarto-dashboard-header {
+//   border-top: solid 0px rgb(98 98 98) !important;
+//   border-bottom: solid 0px rgb(98 98 98) !important;
+// }
+
+// // =============================================================================
+// // CARDS
+// // =============================================================================
+
+// .card {
+//   --bs-card-bg: #100c2a !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+// }
+
+// // Rounded corners for plot widgets inside cards
+// .card .html-widget {
+//   border-radius: 8px !important;
+//   overflow: hidden !important;
+// }
+
+// // Hide full-screen button on non-expandable cards
+// .card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
+//   display: none;
+// }
+
+// .card.noExpandable .bslib-full-screen-enter {
+//   display: none !important;
+// }
+
+// // =============================================================================
+// // VALUE BOXES
+// // =============================================================================
+
+// .value-box-grid {
+//   background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
+// }
+
+// p.value-box-value {
+//   color: white !important;
+// }
+
+// p.value-box-title {
+//   color: white !important;
+// }
+
+// .quarto-dashboard .card.valuebox,
+// .quarto-dashboard .card.bslib-value-box {
+//   min-height: 1rem;
+//   max-height: 150px;
+// }
+
+// .quarto-dashboard .bslib-value-box .value-box-value {
+//   font-family: sans-serif !important;
+// }
+
+// .bslib-value-box.showcase-top-right .value-box-grid .value-box-area {
+//   grid-area: left;
+//   align-self: end;
+//   margin-top: -25px;
+// }
+
+// // Value box borders
+// div.card.bslib-value-box.border {
+//   border: 1px solid #425160ff !important;
+// }
+
+// div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
+//   border-color: #3e5578 !important;
+// }
+
+// // =============================================================================
+// // INPUTS & DROPDOWNS
+// // =============================================================================
+
+// // Video selection dropdown
+// .oi-3a86ea button,
+// .oi-3a86ea input,
+// .oi-3a86ea select,
+// .oi-3a86ea table,
+// .oi-3a86ea textarea {
+//   color: rgba(243, 220, 243, 1) !important;
+//   font: inherit;
+//   font-size: 12px !important;
+//   box-sizing: border-box;
+//   background-color: rgba(80, 47, 137, 1) !important;
+//   border-radius: 5px;
+// }
+
+// label {
+//   display: inline-block;
+//   color: white;
+//   font-size: 12px !important;
+// }
+
+// // =============================================================================
+// // WIDGETS & PLOTS
+// // =============================================================================
+
+// .html-widget,
+// .plotly,
+// .plot-container {
+//   height: 100% !important;
+// }
+
+// .html-fill-container> :not(.html-fill-item) {
+//   flex: 0 0 auto;
+//   color: #f9f9f9;
+//   font-size: 12px;
+// }
+
+// // =============================================================================
+// // GT TABLE (#custom)
+// // =============================================================================
+
+// // Ensure the gt table background is never overridden by the card bg
+// #custom,
+// #custom .gt_container,
+// #custom .gt_table {
+//   background-color: #100c2a !important;
+//   font-size: 12px;
+// }
+
+// // Even rows (default table bg)
+// #custom table tr:nth-child(even) {
+//   background-color: #1e2a45;
+// }
+
+// // Odd rows striping
+// #custom table tr:nth-child(odd) {
+//   background-color: #253352;
+// }
+
+// // Hover must beat both nth-child rules — applied to both even and odd
+// #custom table tr:nth-child(odd):hover,
+// #custom table tr:nth-child(even):hover {
+//   background-color: #2e3f63 !important;
+// }
+
+// #custom .gt_heading {
+//   position: sticky !important;
+//   top: -20px !important;
+//   z-index: 102 !important;
+//   background-color: #100c2a !important;
+// }
+
+
+// /*-- scss:defaults --*/
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+// // $font-family-sans-serif: "Inter", sans-serif;
+
+// // =============================================================================
+// // ROOT & GLOBAL
+// // =============================================================================
+
+// :root {
+//   --bs-border-color: #425160ff;
+// }
+
+// * {
+//   --bslib-spacer: 4px !important;
+// }
+
+// // =============================================================================
+// // NAVBAR
+// // =============================================================================
+
+// .navbar {
+//   background-color: #39274e !important;
+//   color: #908e8e !important;
+// }
+
+// .navbar-logo {
+//   max-height: 48px !important;
+//   min-height: 32px !important;
+//   object-fit: cover;
+//   margin-right: 0.2em;
+// }
+
+// .navbar-dark,
+// .navbar[data-bs-theme="purple"] {
+//   color: #fff;
+// }
+
+// .navbar-dark .navbar-brand,
+// .navbar[data-bs-theme="dark"] .navbar-brand {
+//   font-weight: bold;
+//   background: linear-gradient(to right, #800080, #FFFF00, #008000, #4284eeff);
+//   -webkit-background-clip: text;
+//   background-clip: text;
+//   color: transparent;
+//   font-family: "Abyssinica SIL", "Nyala", sans-serif;
+// }
+
+// .navbar-dark .navbar-brand:hover,
+// .navbar[data-bs-theme="dark"] .navbar-brand:hover {
+//   color: #8ed4eeff;
+// }
+
+// .navbar-dark .nav-link:hover,
+// .navbar[data-bs-theme="dark"] .nav-link:hover {
+//   color: #6ea39dff !important;
+// }
+
+// .navbar-dark .nav-link.active,
+// .navbar[data-bs-theme="dark"] .nav-link.active {
+//   color: #352e9aff;
+// }
+
+// .navbar-dark .navbar-toggler,
+// .navbar[data-bs-theme="dark"] .navbar-toggler {
+//   border-color: #fff;
+// }
+
+// .navbar-toggler {
+//   border-color: rgba(255, 255, 255, 0.6) !important;
+// }
+
+// .navbar-toggler-icon {
+//   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+// }
+
+// .nav-link {
+//   color: rgb(212, 209, 213) !important;
+// }
+
+// .nav-link.active {
+//   color: #83ebfbff !important;
+// }
+
+// // =============================================================================
+// // LAYOUT & CONTENT
+// // =============================================================================
+
+// #quarto-content {
+//   background-color: #262148 !important;
+//   padding-top: 0 !important;
+//   margin-top: 0 !important;
+// }
+
+// .quarto-dashboard #quarto-content.quarto-dashboard-content {
+//   padding: 0rem !important;
+// }
+
+// .quarto-dashboard #quarto-header #quarto-dashboard-header {
+//   border-top: solid 0px rgb(98 98 98) !important;
+//   border-bottom: solid 0px rgb(98 98 98) !important;
+// }
+
+// // =============================================================================
+// // CARDS
+// // =============================================================================
+
+// .card {
+//   --bs-card-bg: #100c2a !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+// }
+
+// // Rounded corners for plot widgets inside cards
+// .card .html-widget {
+//   border-radius: 8px !important;
+//   overflow: hidden !important;
+// }
+
+// // Hide full-screen button on non-expandable cards
+// .card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
+//   display: none;
+// }
+
+// .card.noExpandable .bslib-full-screen-enter {
+//   display: none !important;
+// }
+
+// // =============================================================================
+// // VALUE BOXES
+// // =============================================================================
+
+// .value-box-grid {
+//   background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
+// }
+
+// p.value-box-value {
+//   color: white !important;
+// }
+
+// p.value-box-title {
+//   color: white !important;
+// }
+
+// .quarto-dashboard .card.valuebox,
+// .quarto-dashboard .card.bslib-value-box {
+//   min-height: 1rem;
+//   max-height: 150px;
+// }
+
+// .quarto-dashboard .bslib-value-box .value-box-value {
+//   font-family: sans-serif !important;
+// }
+
+// .bslib-value-box.showcase-top-right .value-box-grid .value-box-area {
+//   grid-area: left;
+//   align-self: end;
+//   margin-top: -25px;
+// }
+
+// // Value box borders
+// div.card.bslib-value-box.border {
+//   border: 1px solid #425160ff !important;
+// }
+
+// div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
+//   border-color: #3e5578 !important;
+// }
+
+// // =============================================================================
+// // INPUTS & DROPDOWNS
+// // =============================================================================
+
+// // Video selection dropdown
+// .oi-3a86ea button,
+// .oi-3a86ea input,
+// .oi-3a86ea select,
+// .oi-3a86ea table,
+// .oi-3a86ea textarea {
+//   color: rgba(243, 220, 243, 1) !important;
+//   font: inherit;
+//   font-size: 12px !important;
+//   box-sizing: border-box;
+//   background-color: rgba(80, 47, 137, 1) !important;
+//   border-radius: 5px;
+// }
+
+// label {
+//   display: inline-block;
+//   color: white;
+//   font-size: 12px !important;
+// }
+
+// // =============================================================================
+// // WIDGETS & PLOTS
+// // =============================================================================
+
+// .html-widget,
+// .plotly,
+// .plot-container {
+//   height: 100% !important;
+// }
+
+// .html-fill-container> :not(.html-fill-item) {
+//   flex: 0 0 auto;
+//   color: #f9f9f9;
+//   font-size: 12px;
+// }
+
+// // =============================================================================
+// // GT TABLE (#custom)
+// // =============================================================================
+
+// // Ensure the gt table background is never overridden by the card bg
+// #custom,
+// #custom .gt_container,
+// #custom .gt_table {
+//   background-color: #1e2a45 !important;
+//   font-size: 12px;
+// }
+
+// // Only fix the card bg bleed — sticky/z-index stay in opt_css() in R
+// #custom .gt_heading {
+//   background-color: #1e2a45 !important;
+// }
+
+// // Even rows (default table bg)
+// #custom table tr:nth-child(even) {
+//   background-color: #1e2a45;
+// }
+
+// // Odd rows striping
+// #custom table tr:nth-child(odd) {
+//   background-color: #253352;
+// }
+
+// // Hover must beat both nth-child rules — applied to both even and odd
+// #custom table tr:nth-child(odd):hover,
+// #custom table tr:nth-child(even):hover {
+//   background-color: #2e3f63 !important;
+// }
+
+
+// /*-- scss:defaults --*/
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+// // $font-family-sans-serif: "Inter", sans-serif;
+
+// // =============================================================================
+// // ROOT & GLOBAL
+// // =============================================================================
+
+// :root {
+//   --bs-border-color: #425160ff;
+// }
+
+// * {
+//   --bslib-spacer: 4px !important;
+// }
+
+// // =============================================================================
+// // NAVBAR
+// // =============================================================================
+
+// .navbar {
+//   background-color: #39274e !important;
+//   color: #908e8e !important;
+// }
+
+// .navbar-logo {
+//   max-height: 48px !important;
+//   min-height: 32px !important;
+//   object-fit: cover;
+//   margin-right: 0.2em;
+// }
+
+// .navbar-dark,
+// .navbar[data-bs-theme="purple"] {
+//   color: #fff;
+// }
+
+// .navbar-dark .navbar-brand,
+// .navbar[data-bs-theme="dark"] .navbar-brand {
+//   font-weight: bold;
+//   background: linear-gradient(to right, #800080, #FFFF00, #008000, #4284eeff);
+//   -webkit-background-clip: text;
+//   background-clip: text;
+//   color: transparent;
+//   font-family: "Abyssinica SIL", "Nyala", sans-serif;
+// }
+
+// .navbar-dark .navbar-brand:hover,
+// .navbar[data-bs-theme="dark"] .navbar-brand:hover {
+//   color: #8ed4eeff;
+// }
+
+// .navbar-dark .nav-link:hover,
+// .navbar[data-bs-theme="dark"] .nav-link:hover {
+//   color: #6ea39dff !important;
+// }
+
+// .navbar-dark .nav-link.active,
+// .navbar[data-bs-theme="dark"] .nav-link.active {
+//   color: #352e9aff;
+// }
+
+// .navbar-dark .navbar-toggler,
+// .navbar[data-bs-theme="dark"] .navbar-toggler {
+//   border-color: #fff;
+// }
+
+// .navbar-toggler {
+//   border-color: rgba(255, 255, 255, 0.6) !important;
+// }
+
+// .navbar-toggler-icon {
+//   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+// }
+
+// .nav-link {
+//   color: rgb(212, 209, 213) !important;
+// }
+
+// .nav-link.active {
+//   color: #83ebfbff !important;
+// }
+
+// // =============================================================================
+// // LAYOUT & CONTENT
+// // =============================================================================
+
+// #quarto-content {
+//   background-color: #262148 !important;
+//   padding-top: 0 !important;
+//   margin-top: 0 !important;
+// }
+
+// .quarto-dashboard #quarto-content.quarto-dashboard-content {
+//   padding: 0rem !important;
+// }
+
+// .quarto-dashboard #quarto-header #quarto-dashboard-header {
+//   border-top: solid 0px rgb(98 98 98) !important;
+//   border-bottom: solid 0px rgb(98 98 98) !important;
+// }
+
+// // =============================================================================
+// // CARDS
+// // =============================================================================
+
+// .card {
+//   --bs-card-bg: #100c2a !important;
+//   color: #282e35;
+//   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+// }
+
+// // Rounded corners for plot widgets inside cards
+// .card .html-widget {
+//   border-radius: 8px !important;
+//   overflow: hidden !important;
+// }
+
+// // Hide full-screen button on non-expandable cards
+// .card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
+//   display: none;
+// }
+
+// .card.noExpandable .bslib-full-screen-enter {
+//   display: none !important;
+// }
+
+// // =============================================================================
+// // VALUE BOXES
+// // =============================================================================
+
+// .value-box-grid {
+//   background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
+// }
+
+// p.value-box-value {
+//   color: white !important;
+// }
+
+// p.value-box-title {
+//   color: white !important;
+// }
+
+// .quarto-dashboard .card.valuebox,
+// .quarto-dashboard .card.bslib-value-box {
+//   min-height: 1rem;
+//   max-height: 150px;
+// }
+
+// .quarto-dashboard .bslib-value-box .value-box-value {
+//   font-family: sans-serif !important;
+// }
+
+// .bslib-value-box.showcase-top-right .value-box-grid .value-box-area {
+//   grid-area: left;
+//   align-self: end;
+//   margin-top: -25px;
+// }
+
+// // Value box borders
+// div.card.bslib-value-box.border {
+//   border: 1px solid #425160ff !important;
+// }
+
+// div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
+//   border-color: #3e5578 !important;
+// }
+
+// // =============================================================================
+// // INPUTS & DROPDOWNS
+// // =============================================================================
+
+// // Video selection dropdown
+// .oi-3a86ea button,
+// .oi-3a86ea input,
+// .oi-3a86ea select,
+// .oi-3a86ea table,
+// .oi-3a86ea textarea {
+//   color: rgba(243, 220, 243, 1) !important;
+//   font: inherit;
+//   font-size: 12px !important;
+//   box-sizing: border-box;
+//   background-color: rgba(80, 47, 137, 1) !important;
+//   border-radius: 5px;
+// }
+
+// label {
+//   display: inline-block;
+//   color: white;
+//   font-size: 12px !important;
+// }
+
+// // =============================================================================
+// // WIDGETS & PLOTS
+// // =============================================================================
+
+// .html-widget,
+// .plotly,
+// .plot-container {
+//   height: 100% !important;
+// }
+
+// .html-fill-container> :not(.html-fill-item) {
+//   flex: 0 0 auto;
+//   color: #f9f9f9;
+//   font-size: 12px;
+// }
+
+// // =============================================================================
+// // GT TABLE (#custom)
+// // =============================================================================
+
+// // Ensure the gt table background is never overridden by the card bg
+// #custom,
+// #custom .gt_container,
+// #custom .gt_table {
+//   background-color: #1e2a45 !important;
+//   font-size: 12px;
+// }
+
+// // Fix card bg bleed on title and column headers
+// #custom .gt_heading,
+// #custom .gt_col_headings,
+// #custom .gt_col_heading {
+//   background-color: #1e2a45 !important;
+// }
+
+// // Even rows (default table bg)
+// #custom table tr:nth-child(even) {
+//   background-color: #1e2a45;
+// }
+
+// // Odd rows striping
+// #custom table tr:nth-child(odd) {
+//   background-color: #253352;
+// }
+
+// // Hover must beat both nth-child rules — applied to both even and odd
+// #custom table tr:nth-child(odd):hover,
+// #custom table tr:nth-child(even):hover {
+//   background-color: #2e3f63 !important;
+// }
+
 /*-- scss:defaults --*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 // $font-family-sans-serif: "Inter", sans-serif;
 
-.navbar-logo {
-  max-height: 48px !important;
-  min-height: 32px !important;
-  //padding-right: 1px !important;
-  object-fit: cover;
-  margin-right: 0.2em;
-}
-
-.navbar {
-  background-color: #2e2e35 !important;
-  color: rgb(53.19, 53.19, 53.19) !important;
-}
-
-#quarto-content {
-  background-color: #626262 !important;
-}
-
-//  Value box 
-.value-box-grid {
-  background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
-}
-
-p.value-box-value {
-  color: white !important;
-}
-
-p.value-box-title {
-  color: white !important;
-}
-
-div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
-  border-color: #3e5578 !important; //
-}
-
-.card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
-  display: none;
-}
-
-.card.noExpandable .bslib-full-screen-enter {
-  display: none !important;
-}
-
-// ==== To chnage the bg of any card
-.card {
-  --bs-card-bg: #4E4E4E !important;
-  color: #282e35;
-  border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
-
-}
-
-// Video selection dropdown
-.oi-3a86ea button,
-.oi-3a86ea input,
-.oi-3a86ea select,
-.oi-3a86ea table,
-.oi-3a86ea textarea {
-  color: inherit;
-  font: inherit;
-  box-sizing: border-box;
-  background-color: rgba(80, 47, 137, 1) !important;
-  border-radius: 5px;
-  color: rgba(243, 220, 243, 1) !important;
-  font-size: 12px !important;
-}
-
-// For select mezmure
-label {
-  display: inline-block;
-  color: white;
-  font-size: 12px !important;
-}
-
-.quarto-dashboard .card.valuebox,
-.quarto-dashboard .card.bslib-value-box {
-  min-height: 1rem;
-  max-height: 150px;
-}
-
-.bslib-value-box.showcase-top-right .value-box-grid .value-box-area {
-  grid-area: left;
-  align-self: end;
-  margin-top: -25px;
-}
-
-.navbar-logo {
-  max-height: 48px !important;
-  min-height: 32px !important;
-  //padding-right: 1px !important;
-  object-fit: cover;
-  margin-right: 0.2em;
-}
-
-.navbar {
-  background-color: #2e2e35 !important;
-  color: rgb(53.19, 53.19, 53.19) !important;
-}
-
-#quarto-content {
-  background-color: #626262 !important;
-}
-
-//  Value box 
-.value-box-grid {
-  background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
-}
-
-p.value-box-value {
-  color: white !important;
-}
-
-p.value-box-title {
-  color: white !important;
-}
-
-div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
-  border-color: #3e5578 !important; //
-}
-
-.card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
-  display: none;
-}
-
-.card.noExpandable .bslib-full-screen-enter {
-  display: none !important;
-}
-
-
-// ==== To chnage the bg of any card
-.card {
-
-  --bs-card-bg: #1c1b1bff !important;
-  color: #282e35;
-  border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
-
-}
-
-// Video selection dropdown
-.oi-3a86ea button,
-.oi-3a86ea input,
-.oi-3a86ea select,
-.oi-3a86ea table,
-.oi-3a86ea textarea {
-  background-color: rgba(80, 47, 137, 1) !important;
-  border-radius: 5px;
-  color: rgba(243, 220, 243, 1) !important;
-  font-size: 12px !important;
-}
-
-// For select mezmure
-label {
-  display: inline-block;
-  color: white;
-  font-size: 12px !important;
-}
-
-
-// overrides all bslib spacing gaps
-* {
-  --bslib-spacer: 4px !important;
-}
-
-#quarto-content {
-  // background-color: #626262 !important;
-  background-color: #1c1c38ff !important;
-  padding-top: 0 !important; // add this line
-  margin-top: 0 !important;
-}
-
-.quarto-dashboard #quarto-content.quarto-dashboard-content {
-  padding: 0rem !important;
-}
-
-// Top value boxes border color 
-
-div.card.bslib-value-box.border {
-  border: 1px solid #425160ff !important;
-}
-
-.quarto-dashboard #quarto-header #quarto-dashboard-header {
-  border-top: solid 0px rgb(98 98 98) !important;
-  border-bottom: solid 0px rgb(98 98 98) !important;
-}
-
-.quarto-dashboard #quarto-header #quarto-dashboard-header {
-  border-top: solid 0px rgb(98 98 98) !important;
-  border-bottom: solid 0px rgb(98 98 98) !important;
-}
+// =============================================================================
+// ROOT & GLOBAL
+// =============================================================================
 
 :root {
   --bs-border-color: #425160ff;
 }
 
-#custom .gt_table {
-  font-size: 12px;
+* {
+  --bslib-spacer: 4px !important;
 }
 
-.html-fill-container>:not(.html-fill-item) {
-  flex: 0 0 auto;
-  color: #f9f9f9;
-  font-size: 12px;
+// =============================================================================
+// NAVBAR
+// =============================================================================
+
+.navbar {
+  background-color: #39274e !important;
+  color: #908e8e !important;
 }
 
-// Rounded card for plots
-.card .html-widget {
-  border-radius: 8px !important;
-  overflow: hidden !important;
+.navbar-logo {
+  max-height: 48px !important;
+  min-height: 32px !important;
+  object-fit: cover;
+  margin-right: 0.2em;
 }
-
-.html-widget,
-.plotly,
-.plot-container {
-  height: 100% !important;
-}
-
-
-
-// ==========
 
 .navbar-dark,
 .navbar[data-bs-theme="purple"] {
   color: #fff;
-  /* navbar text color */
-}
-
-.navbar-dark .navbar-brand,
-.navbar[data-bs-theme="dark"] .navbar-brand {
-  color: #d9cde1ff;
-  /* brand color */
-}
-
-.navbar-dark .navbar-brand:hover,
-.navbar[data-bs-theme="dark"] .navbar-brand:hover {
-  color: #8ed4eeff;
-  /* brand hover color */
-}
-
-.navbar-dark .nav-link:hover,
-.navbar[data-bs-theme="dark"] .nav-link:hover {
-  color: #6ea39dff !important;
-  /* link hover color */
-}
-
-.navbar-dark .nav-link.active,
-.navbar[data-bs-theme="dark"] .nav-link.active {
-  color: #352e9aff;
-  /* active links */
-}
-
-.navbar-dark .navbar-toggler,
-.navbar[data-bs-theme="dark"] .navbar-toggler {
-  border-color: #fff;
-  /* toggler border */
-}
-
-.nav-link.active {
-  color: #83ebfbff !important;
-}
-
-.nav-link {
-  color: rgb(212, 209, 213) !important;
 }
 
 .navbar-dark .navbar-brand,
@@ -272,45 +1093,212 @@ div.card.bslib-value-box.border {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* Optional: Ensure Amharic characters render clearly */
   font-family: "Abyssinica SIL", "Nyala", sans-serif;
 }
 
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+.navbar-dark .navbar-brand:hover,
+.navbar[data-bs-theme="dark"] .navbar-brand:hover {
+  color: #8ed4eeff;
+}
+
+.navbar-dark .nav-link:hover,
+.navbar[data-bs-theme="dark"] .nav-link:hover {
+  color: #6ea39dff !important;
+}
+
+.navbar-dark .nav-link.active,
+.navbar[data-bs-theme="dark"] .nav-link.active {
+  color: #352e9aff;
+}
+
+.navbar-dark .navbar-toggler,
+.navbar[data-bs-theme="dark"] .navbar-toggler {
+  border-color: #fff;
 }
 
 .navbar-toggler {
   border-color: rgba(255, 255, 255, 0.6) !important;
 }
 
-.quarto-dashboard .bslib-value-box .value-box-value {
-  font-family: sans-serif !important;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
-
-//  Testing 
-
-.navbar {
-  background-color: #39274e !important;
-  // color: #353535 !important;
-  color: #908e8e !important;
+.nav-link {
+  color: rgb(212, 209, 213) !important;
 }
+
+.nav-link.active {
+  color: #83ebfbff !important;
+}
+
+// =============================================================================
+// LAYOUT & CONTENT
+// =============================================================================
 
 #quarto-content {
   background-color: #262148 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
-.card {
-  --bs-card-bg: #4E4E4E !important;
-  color: #282e35;
-  border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
-
+.quarto-dashboard #quarto-content.quarto-dashboard-content {
+  padding: 0rem !important;
 }
+
+.quarto-dashboard #quarto-header #quarto-dashboard-header {
+  border-top: solid 0px rgb(98 98 98) !important;
+  border-bottom: solid 0px rgb(98 98 98) !important;
+}
+
+// =============================================================================
+// CARDS
+// =============================================================================
 
 .card {
   --bs-card-bg: #100c2a !important;
   color: #282e35;
   border: var(--bs-card-border-width) solid rgb(159 161 159 / 18%);
+}
 
+// Rounded corners for plot widgets inside cards
+.card .html-widget {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+// Hide full-screen button on non-expandable cards
+.card.noExpandable[data-full-screen="false"]:hover>*>.bslib-full-screen-enter {
+  display: none;
+}
+
+.card.noExpandable .bslib-full-screen-enter {
+  display: none !important;
+}
+
+// =============================================================================
+// VALUE BOXES
+// =============================================================================
+
+.value-box-grid {
+  background: linear-gradient(135deg, #2a3d56, #3e5578 20%, #1e4b78 90%, #2a3d56);
+}
+
+p.value-box-value {
+  color: white !important;
+}
+
+p.value-box-title {
+  color: white !important;
+}
+
+.quarto-dashboard .card.valuebox,
+.quarto-dashboard .card.bslib-value-box {
+  min-height: 1rem;
+  max-height: 150px;
+}
+
+.quarto-dashboard .bslib-value-box .value-box-value {
+  font-family: sans-serif !important;
+}
+
+.bslib-value-box.showcase-top-right .value-box-grid .value-box-area {
+  grid-area: left;
+  align-self: end;
+  margin-top: -25px;
+}
+
+// Value box borders
+div.card.bslib-value-box.border {
+  border: 1px solid #425160ff !important;
+}
+
+div.card.bslib-card.bslib-mb-spacing.html-fill-item.html-fill-container.bslib-value-box.default.border.noExpandable.showcase-left-center {
+  border-color: #3e5578 !important;
+}
+
+// =============================================================================
+// INPUTS & DROPDOWNS
+// =============================================================================
+
+// Video selection dropdown
+.oi-3a86ea button,
+.oi-3a86ea input,
+.oi-3a86ea select,
+.oi-3a86ea table,
+.oi-3a86ea textarea {
+  color: rgba(243, 220, 243, 1) !important;
+  font: inherit;
+  font-size: 12px !important;
+  box-sizing: border-box;
+  background-color: rgba(80, 47, 137, 1) !important;
+  border-radius: 5px;
+}
+
+label {
+  display: inline-block;
+  color: white;
+  font-size: 12px !important;
+}
+
+// =============================================================================
+// WIDGETS & PLOTS
+// =============================================================================
+
+.html-widget,
+.plotly,
+.plot-container {
+  height: 100% !important;
+}
+
+.html-fill-container> :not(.html-fill-item) {
+  flex: 0 0 auto;
+  color: #f9f9f9;
+  font-size: 12px;
+}
+
+// =============================================================================
+// GT TABLE (#custom)
+// =============================================================================
+
+// Ensure the gt table background is never overridden by the card bg
+#custom,
+#custom .gt_container,
+#custom .gt_table {
+  // background-color: #1e2a45 !important;
+  background-color: #100c2a !important;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+// Fix card bg bleed on title and column headers
+#custom .gt_heading,
+#custom .gt_heading .gt_title,
+#custom .gt_col_headings,
+#custom .gt_col_heading {
+  // background-color: #1e2a45 !important;
+  background-color: #100c2a !important;
+
+}
+
+// Even rows (default table bg)
+#custom table tr:nth-child(even) {
+  background-color: #1e2a45;
+}
+
+// Odd rows striping
+#custom table tr:nth-child(odd) {
+  background-color: #253352;
+}
+
+// Hover must beat both nth-child rules — applied to both even and odd
+#custom table tr:nth-child(odd):hover,
+#custom table tr:nth-child(even):hover {
+  background-color: #2e3f63 !important;
+}
+
+#custom .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px !important;
+  border-bottom-color: #2e3f63 !important;
 }
