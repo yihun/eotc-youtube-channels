@@ -3,5 +3,5 @@ isodate
 tqdm
 google-api-python-client
 dotenv
+psycopg2-binary
 sqlalchemy
-psycopg2

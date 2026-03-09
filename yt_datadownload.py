@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from tqdm import tqdm
 from sqlalchemy import create_engine, text
 import re
-
+import psycopg2  # noqa: F401
 
 # ----------------------------
 # ENV + API SETUP
