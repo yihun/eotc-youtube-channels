@@ -7,4 +7,3 @@ This project automatically collects, stores, and visualizes YouTube channel data
 
 🔄 Automatically refreshed weekly via GitHub Actions  
 📊 Built with Quarto, R, and Python
-

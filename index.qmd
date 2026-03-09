@@ -715,16 +715,16 @@ base_plot_3 <- videos |>
   ungroup() |>
   mutate(
     service_cat = forcats::fct_reorder(service_cat, total_view),
-    highlight = ifelse(service_cat != "Other Services", "#1261A0", "grey17")
+    highlight = ifelse(service_cat != "Other Services", "#57a4d4", "grey17")
   ) |>
   mutate(
     clr = case_when(
-      service_cat == "Other Services" ~ '#1A0045',
-      service_cat == "Easter Season" ~ "#260054",
-      service_cat == "Miltan" ~ "#330064",
-      service_cat == "Wudasie Mariam" ~ "#3F0073",
-      service_cat == "Sermon/Teaching" ~ "#9066AF",
-      service_cat == "Tselot Zeserk" ~ "#7F4DA4"
+      service_cat == "Other Services" ~ '#64b8e5',
+      service_cat == "Easter Season" ~ "#568596",
+      service_cat == "Miltan" ~ "#7cacbb",
+      service_cat == "Wudasie Mariam" ~ "#b6dce6",
+      service_cat == "Sermon/Teaching" ~ "#c0c8d0",
+      service_cat == "Tselot Zeserk" ~ "#d8bdec"
     )
   ) |>
   ggplot(aes(
@@ -767,7 +767,7 @@ ggplotly(base_plot_3, tooltip = "text") |>
     text = "ℹ️", # Info icon
     showarrow = FALSE,
     font = list(size = 20),
-    bgcolor = "rgba(255, 255, 255, 0.8)",
+    bgcolor = "#ffffffcc",
     bordercolor = "white",
     borderwidth = 1,
     hovertext = paste(

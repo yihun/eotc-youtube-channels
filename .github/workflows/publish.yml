@@ -47,7 +47,14 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-      - name: Debug - List files
+
+      - name: Fethch Youtube data
+        run: python yt_datadownload.py
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Debug -List files
         run: ls -R
 
       - name: Render and Publish
@@ -56,4 +63,8 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          NEON_DBNAME: ${{ secrets.NEON_DBNAME }}
+          NEON_HOST: ${{ secrets.NEON_HOST }}
+          NEON_PORT: ${{ secrets.NEON_PORT }}
+          NEON_USER: ${{ secrets.NEON_USER }}
+          NEON_PASSWORD: ${{ secrets.NEON_PASSWORD }}

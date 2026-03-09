@@ -1,18 +1,33 @@
 # Loading libraries
 
 library(DBI)
-library(RSQLite)
+# library(RSQLite)
+library(RPostgres)
 library(dplyr)
 library(stringr)
 # set plot background
 dark_gregy = "#1e2a45"
 # Dallas Debre Miheret St Micheal=1 and Debre Berhan Holy Trinity EOTC=2
-mydb_conn <- dbConnect(RSQLite::SQLite(), "eotc_youtube_data.db")
+# mydb_conn <- dbConnect(RSQLite::SQLite(), "eotc_youtube_data.db")
+mydb_conn <- DBI::dbConnect(
+  RPostgres::Postgres(),
+  dbname = Sys.getenv("NEON_DBNAME"),
+  host = Sys.getenv("NEON_HOST"),
+  port = as.integer(Sys.getenv("NEON_PORT")),
+  user = Sys.getenv("NEON_USER"),
+  password = Sys.getenv("NEON_PASSWORD"),
+  sslmode = "require"
+)
 
+# Videos
 videos <- dbGetQuery(mydb_conn, "SELECT * FROM videos;") |>
   dplyr::mutate(published_at = lubridate::ymd_hms(published_at, tz = "UTC")) |>
   dplyr::filter(channel == 2) # Holy Trinity church
+
+# Comments
 comments <- dbGetQuery(mydb_conn, "SELECT * FROM comments;")
+
+# Channel stats
 channel_stats <- dbGetQuery(mydb_conn, "SELECT * FROM channels;")
 
 comments <- comments |>
@@ -109,3 +124,34 @@ videos <- videos |>
       TRUE ~ "Normal"
     )
   )
+
+
+library(DBI)
+library(RPostgres)
+
+# Test the connection
+con <- dbConnect(
+  RPostgres::Postgres(),
+  dbname = "neondb",
+  host = "ep-fragrant-union-adq9yfen-pooler.c-2.us-east-1.aws.neon.tech",
+  port = 5432,
+  user = "neondb_owner",
+  password = "npg_RN2tucbVT9BU",
+  sslmode = "require"
+)
+
+
+library(DBI)
+library(RPostgres)
+
+con <- DBI::dbConnect(
+  RPostgres::Postgres(),
+  dbname = Sys.getenv("NEON_DBNAME"),
+  host = Sys.getenv("NEON_HOST"),
+  port = as.integer(Sys.getenv("NEON_PORT")),
+  user = Sys.getenv("NEON_USER"),
+  password = Sys.getenv("NEON_PASSWORD"),
+  sslmode = "require"
+)
+
+DBI::dbListTables(con)

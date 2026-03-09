@@ -3,3 +3,4 @@ isodate
 tqdm
 google-api-python-client
 dotenv
+sqlalchemy

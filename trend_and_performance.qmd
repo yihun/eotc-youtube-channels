@@ -210,7 +210,7 @@ trnd_plot1 <- videos %>%
   ggplot(aes(
     x = factor(hour_of_day),
     y = avg_views,
-    fill = Count,
+    fill = avg_views,
     text = paste(
       'Hours of the Day:',
       hour_of_day,
@@ -221,7 +221,7 @@ trnd_plot1 <- videos %>%
     )
   )) +
   geom_col() +
-  scale_fill_gradient(low = "#1A0045", high = "#7F4DA4") +
+  scale_fill_gradient(low = "#87b6ec", high = "#1178b7") +
   labs(
     title = "Average Views by Hour of Publish (UTC)",
     y = "Avg. Views by Hr",
@@ -252,6 +252,16 @@ ggplotly(trnd_plot1, tooltip = "text") |>
 #| label: sentiment-wordcloud
 #| fig-height: 3.5
 #| fig-width: 8
+wk_colors <- c(
+  "Sunday"    = "#d9edf3",
+  "Monday"    = "#c4e1ed",
+  "Tuesday"   = "#aed5e7",
+  "Wednesday" = "#49a9dd",
+  "Thursday"  = "#6eb9df",
+  "Friday"    = "#99c9e1",
+  "Saturday"  = "#b7d1e6"
+)
+
 
 trnd_plot2 <- videos |> 
   group_by(day_of_week) |> 
@@ -260,7 +270,7 @@ trnd_plot2 <- videos |>
   ggplot(aes(
     x = factor(day_of_week),
     y = avg_views,
-    fill = Count,
+    fill = day_of_week,
     text = paste(
       'Day of the Week:',
       day_of_week,
@@ -271,15 +281,12 @@ trnd_plot2 <- videos |>
     )
   )) +
   geom_col() +
-  scale_fill_gradient(low = "#191745ff", high = "#227ec9ff") +
+  scale_fill_manual(values = wk_colors)+
   coord_flip()+
   labs(
     title = "Average Views by Day of the Week",
     y = "Avg. views by day",
     x = "Day"
-  ) +
-  scale_y_continuous(
-    labels = scales::label_number(scale_cut = scales::cut_short_scale())
   ) +
   guides(fill = "none") +
   custom_theme()
@@ -403,7 +410,7 @@ for (i in seq_along(month_order)) {
              yref = "paper",
              xanchor = "center",
              yanchor   = "bottom",
-             showarrow = FALSE, font = list(size = 13, color = "black"))
+             showarrow = FALSE, font = list(size = 13, color = "white"))
       ),
       xaxis = list(showticklabels = FALSE, showgrid = FALSE),
       yaxis = list(showgrid = FALSE)
