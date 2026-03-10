@@ -23,6 +23,8 @@ editor_options:
 ```
 
 
+
+
 ```{=html}
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -107,7 +109,7 @@ editor_options:
                 <div class="section-title">
                     <i class="fas fa-calendar-alt me-2"></i>Data Period
                 </div>
-                <p class="mb-3">Weekly update</p>
+                <p class="mb-3">Weekly update: Monday 1:00 pm CST</p>
                 
                 <div class="section-title">
                     <i class="fas fa-database me-2"></i>Data Source
@@ -116,10 +118,7 @@ editor_options:
                 <p class="mb-2">
                     The core of its functionality relies on the Google YouTube Data API and Google YouTube Analytics API.
                     <br>
-                    <a href="https://developers.google.com/youtube/v3" target="_blank" class="text-decoration-none">
-                        <i class="fas fa-external-link-alt me-1"></i>
-                        https://developers.google.com/youtube/v3
-                    </a>
+
                 </p>
                 <p class="mb-3">
                     Accessed via: 
@@ -139,7 +138,12 @@ editor_options:
                         https://github.com/yihun/eotc-youtube-channels
                     </a>
                 </div>
-                
+                <div class="section-title mt-4">
+                    <i class="fas fa-handshake me-2"></i>Affilations
+                </div>
+                <p class="mb-0">
+                    This dashboard doesn't have any affilation with Debre Berhan Kidist Selassie Church of Garland TX
+                </p>
                 <div class="section-title mt-4">
                     <i class="fas fa-user-circle me-2"></i>Credits
                 </div>
