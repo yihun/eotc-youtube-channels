@@ -419,7 +419,8 @@ max_date <- max(six_months_videos$published, na.rm = TRUE)
 
 # Filter for the last 24 weeks from that max date
 six_months_videos <- six_months_videos %>%
-  filter(published >= (max_date - lubridate::weeks(24)))
+  filter(published >= (max_date - lubridate::weeks(24))) |>
+  arrange(desc(published))
 
 ```
 
